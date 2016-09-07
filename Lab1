@@ -1,0 +1,19 @@
+Name: Joshua Lathery
+
+Commands and Explanations for Steps in Lab 1
+-------------------------------------------
+3)
+- Created README in text editor
+- git init
+- git add README.md
+- git remote add origin https://github.com/joshlathery/CEG4110.git
+- git commit -m "Initial Commit"
+- git push -u origin master
+
+4)
+- mkdir Lab1Sub
+- cd Lab1Sub
+- git clone https://github.com/derk--/ceg4110-tutorial.git
+- Edited Helloworld.java in text editor
+  "System.out.println("This is for lab 1");"
+- Deleted the .git folder in the ceg4110-tutorial folder
