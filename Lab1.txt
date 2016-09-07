@@ -1,0 +1,149 @@
+Name: Joshua Lathery
+
+Commands and Explanations for Steps in Lab 1
+-------------------------------------------
+3)
+- Created README in text editor
+- git init
+- git add README.md
+- git remote add origin https://github.com/joshlathery/CEG4110.git
+- git commit -m "Initial Commit"
+- git push -u origin master
+
+4)
+- mkdir Lab1Sub
+- cd Lab1Sub
+- git clone https://github.com/derk--/ceg4110-tutorial.git
+- Edited Helloworld.java in text editor
+  "System.out.println("This is for lab 1");"
+- Deleted the .git folder in the ceg4110-tutorial folder
+- cd ceg4110-tutorial
+- git add HellowWorld.java
+- git commit -m "added java file"
+- git push
+
+5)
+- Created 2 copies of Hello World
+- git add Hello4110-a.java
+- git add Hello4110-b.java
+- git commit -m "added 2 java file copies"
+- git rm HelloWorld-a.java
+- git status
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+      On branch master
+      Your branch is ahead of 'origin/master' by 1 commit.
+        (use "git push" to publish your local commits)
+      Changes to be committed:
+        (use "git reset HEAD <file>..." to unstage)
+
+      	deleted:    Hello4110-a.java
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+- git commit -m "removed java a file"
+
+6)
+- rm Hello4110-b.java
+-git status
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	deleted:    Hello4110-b.java
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This status is different because we did not stage the removal of the java b file, unlike the last step where we removed it within git.
+
+7)
+- git log
+  Found commit ID for when I added the 2 java copies
+- git git reset --hard 3774d8f5ffc54b3c3680c40f2660fd972e426018
+
+8)
+- mv HelloWorld.java ../..
+- git status
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	deleted:    Lab1Sub/ceg4110-tutorial/HelloWorld.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	HelloWorld.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+We should not commit because git thinks we made a new file in root and deleted the location we moved from. If we commit and close local changes, the file could be lost
+
+9)
+- mv HelloWorld.java Lab1Sub/ceg4110-tutorial
+- git mv HelloWorld.java ../..
+- git commit -m "Moved HelloWorld original file to root"
+
+10)
+- git push
+
+11)
+- git log -p
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+commit f39289b22cea2fd1e3fdb2b3153209275d8358d1
+Author: josh <joshlathery@gmail.com>
+Date:   Wed Sep 7 14:20:55 2016 -0400
+
+    Moved HelloWorld orginal file to root
+
+diff --git a/HelloWorld.java b/HelloWorld.java
+new file mode 100644
+index 0000000..cb9fd89
+--- /dev/null
++++ b/HelloWorld.java
+@@ -0,0 +1,6 @@
++public class HelloWorld {
++       public static void main(String args[]){
++               System.out.println("This is for lab 1");
++
++}
++}
+diff --git a/Lab1Sub/ceg4110-tutorial/HelloWorld.java b/Lab1Sub/ceg4110-tutorial/HelloWorld.java
+deleted file mode 100644
+index cb9fd89..0000000
+--- a/Lab1Sub/ceg4110-tutorial/HelloWorld.java
+:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+12)
+- git diff 3774d8f5ffc54b3c3680c40f2660fd972e426018
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+diff --git a/HelloWorld.java b/HelloWorld.java
+new file mode 100644
+index 0000000..cb9fd89
+--- /dev/null
++++ b/HelloWorld.java
+@@ -0,0 +1,6 @@
++public class HelloWorld {
++       public static void main(String args[]){
++               System.out.println("This is for lab 1");
++
++}
++}
+diff --git a/Lab1Sub/ceg4110-tutorial/HelloWorld.java b/Lab1Sub/ceg4110-tutorial/HelloWorld.java
+deleted file mode 100644
+index cb9fd89..0000000
+--- a/Lab1Sub/ceg4110-tutorial/HelloWorld.java
++++ /dev/null
+@@ -1,6 +0,0 @@
+-public class HelloWorld {
+-       public static void main(String args[]){
+-               System.out.println("Th
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The above output basically outlines all changes that were made between my current commit and the past commit where I added 2 java files. This confirms the lab is complete.
